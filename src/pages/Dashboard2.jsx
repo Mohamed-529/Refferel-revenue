@@ -1,4 +1,3 @@
-import ReferralDetailsPage from "./ReferralDetailsPage";
 import { useNavigate } from "react-router-dom";
 import {useState} from "react";
 import "../styles/dashboard2.css"

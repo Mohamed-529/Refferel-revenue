@@ -79,10 +79,14 @@ const copyReferralCode = () => {
     }
     useEffect(() => {
         fetchData();
+         // eslint-disable-next-line react-hooks/exhaustive-deps
+    
     }, []);
 
     useEffect(()=>{
         fetchReferrals();
+         // eslint-disable-next-line react-hooks/exhaustive-deps
+    
     },[searchTerm,sortOrder])
 
     if (!token) {
