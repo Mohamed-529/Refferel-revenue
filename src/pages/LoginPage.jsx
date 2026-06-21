@@ -29,10 +29,12 @@ function LoginPage() {
     try {
       const response = await fetch(url, options);
       const data = await response.json();
+       
 
       if (response.ok) {
         
-        Cookies.set('jwt_token', data.token);
+        Cookies.set('jwt_token', data.data.token);
+        console.log(data);
         navigate('/');
       } else {
         
@@ -65,7 +67,7 @@ function LoginPage() {
       value={password}
       onChange={(e) => setPassword(e.target.value)}
     />
-    <button type="submit">Sign In</button>
+    <button type="submit">Sign in</button>
     {error && <p >{error}</p>}
   </form>
 )
