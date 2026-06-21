@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import Cookies from 'js-cookie'
+import '../styles/login.css'
 
 function LoginPage() {
   const [email,setEmail] = useState('');
@@ -46,29 +47,31 @@ function LoginPage() {
     }
   }
   return(
-  <form onSubmit={handleSubmit}>
-    <h1>Go Business</h1>
+  <form onSubmit={handleSubmit} className="login-form">
+    <h1 className="login-title">Go Business</h1>
     <p>Sign in to open your referral dashboard.</p>
-    <label htmlFor="email">Email</label>
+    <label htmlFor="email" className="login-label">Email</label>
     <input 
       type="email" 
       id="email" 
       name="email" 
       placeholder="you@example.com" 
+      className="login-input"
       value={email}
       onChange={(e) => setEmail(e.target.value)}
     />
-    <label htmlFor="password">Password</label>
+    <label htmlFor="password" className="login-label">Password</label>
     <input 
       type="password" 
       id="password" 
+      className='login-input'
       name="password" 
       placeholder="Enter your password" 
       value={password}
       onChange={(e) => setPassword(e.target.value)}
     />
-    <button type="submit">Sign in</button>
-    {error && <p >{error}</p>}
+    <button type="submit" className="login-button">Sign in</button>
+    {error && <span className="login-error">{error}</span>}
   </form>
 )
 }

@@ -1,0 +1,139 @@
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #f8fafc;
+  font-family: sans-serif;
+}
+
+.dashboard-section {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 1.15rem;
+  color: #0f172a;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 600px) {
+  .metrics-grid {
+    grid-template-columns: 1fr; 
+  }
+}
+
+.metric-card {
+  background-color: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.summary-inline-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.summary-item {
+  flex: 1;
+  min-width: 150px;
+}
+
+.summary-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.summary-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #334155;
+  margin: 0;
+}
+
+.referral-flex-container {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.input-field-group {
+  flex: 1;
+  min-width: 280px;
+}
+
+.field-title {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.input-action-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px 0 0 6px;
+  background-color: #f8fafc;
+  color: #334155;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.action-button {
+  padding: 10px 20px;
+  background-color: #6366f1; 
+  color: #ffffff;
+  border: none;
+  border-radius: 0 6px 6px 0; 
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #4f46e5;
+}

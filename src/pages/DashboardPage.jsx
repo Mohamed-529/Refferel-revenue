@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { Navigate } from "react-router-dom";
 import Cookie from "js-cookie";
 import { useState, useEffect } from "react";
+import "../styles/dashboard.css"
 
 
 function DashboardPage() {
@@ -96,43 +97,68 @@ const copyReferralCode = () => {
     }
 
     return (
-        <div>
+        <div className="dashboard-container">
             <Navbar />
             <h1>Referral Dashboard</h1>
             <p>Track your referrals, earnings, and partner activity in one place.</p>
-                <section> <h2>Overview</h2>
+                <section className="dashboard-section"> <h2>Overview</h2>
+                <div className="metrics-grid">
                  {metrics.map(each => (
-                     <div key={each.id}>
+                     <div key={each.id} className="metric-card">
                          <h1>{each.value}</h1>
                          <p>{each.label}</p>
                      </div>
                  ))}
+                 </div>
                  </section> 
-                <section> <h2>Service summary</h2>
-                <label htmlFor="Service">SERVICE</label>
-                <p>{serviceSummary.service}</p>
-                <label htmlFor="YourReferrals">YOUR REFERRALS</label>
-                <p>{serviceSummary.yourReferrals}</p>
-                <label htmlFor="ActiveReferrals">ACTIVE REFERRALS</label>
-                <p>{serviceSummary.activeReferrals}</p>
-                <label htmlFor="Total referral earnings">TOTAL REF.EARNINGS</label>
-                <p>{serviceSummary.totalRefEarnings}</p>
+                <section className="dashboard-section"> <h2 className="section-title">Service summary</h2>
+                <div className="summary-inline-row">
+                <div className="summary-item">
+                <label className="summary-label">SERVICE</label>
+                <p className="summary-value">{serviceSummary.service}</p>
+                </div>
+
+                <div className="summary-item">
+                <label className="summary-label">YOUR REFERRALS</label>
+                <p className="summary-value">{serviceSummary.yourReferrals}</p>
+                </div>
+
+                <div className="summary-item">
+                <label className="summary-label">ACTIVE REFERRALS</label>
+                <p className="summary-value">{serviceSummary.activeReferrals}</p>
+                </div>
+
+                <div className="summary-item">
+                <label className="summary-label">TOTAL REF.EARNINGS</label>
+                <p className="summary-value">{serviceSummary.totalRefEarnings}</p>
+                </div>
+
+                </div>
                 </section> 
-                <section>
-                <h2>Refer friends and earn more</h2>
-                <div>
-                    <div><label htmlFor="YourReferralLink">Your Referral Link</label>
-                    <input type="text" id="YourReferralLink" value={referral.link} readOnly />
-                    <button type="button" onClick={copyReferralLink}>
-                        Copy
-                    </button>
+
+                <section className="dashboard-section">
+                <h2 className="section-title">Refer friends and earn more</h2>
+                <div className="referral-flex-container">
+
+                    <div className="input-field-group">
+                        <label htmlFor="YourReferralLink" className="field-title">Your Referral Link</label>
+                        <div className="input-action-wrapper">
+                        <input type="text" id="YourReferralLink" value={referral.link} readOnly className="dashboard-input" />
+                        <button type="button" onClick={copyReferralLink} className="action-button">Copy</button>
+                        </div>
                     </div>
-                    <div><label htmlFor="YourReferralCode">Your Referral Code</label>
-                    <input type="text" id="YourReferralCode" value={referral.code} readOnly />
-                    <button type="button" onClick={copyReferralCode}>
-                        Copy
-                    </button>
+
+
+                    <div className="input-field-group">
+                        <label htmlFor="YourReferralCode" className="field-title">Your Referral Code</label>
+                        <div className="input-action-wrapper">
+                            <input type="text" id="YourReferralCode" value={referral.code} readOnly className="dashboard-input" />
+                            <button type="button" onClick={copyReferralCode} className="action-button">
+                                Copy
+                            </button>
+                        </div>
                     </div>
+
                 </div>
             </section>
             <Dashboard2 referrals={referrals} searchTerm={searchTerm} setSearchTerm={setSearchTerm} sortOrder={sortOrder} setSortOrder={setSortOrder} />

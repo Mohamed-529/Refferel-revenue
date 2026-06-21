@@ -1,6 +1,7 @@
 import ReferralDetailsPage from "./ReferralDetailsPage";
 import { useNavigate } from "react-router-dom";
 import {useState} from "react";
+import "../styles/dashboard2.css"
 
 function Dashboard2(props){
     const { referrals, searchTerm, setSearchTerm, sortOrder, setSortOrder } = props;
@@ -15,18 +16,19 @@ function Dashboard2(props){
 
     return(
         <>
-        <section>
-          <h1>All referrals</h1>
-          <div>
-            <div> <label htmlFor="Search">Search</label>
-            <input type="text" id="Search" placeholder="Name or service..." value={searchTerm} onChange={(e) => {
+        <section className="dashboard-section table-card-section">
+          <h1 className="section-title main-table-title">All referrals</h1>
+          <div className="table-filter-bar">
+            <div className="filter-input-group"> <label htmlFor="Search">Search</label>
+            <input type="text" id="Search" className="search-input-field" placeholder="Name or service..." value={searchTerm} onChange={(e) => {
                 setSearchTerm(e.target.value);
                 setCurrentPage(1);
             }} />
             </div>
-            <div>
-                <label htmlFor="Sortbydate">Sort by date</label>
-                <select id="sort" value={sortOrder} onChange={(e) => {
+
+            <div className="filter-input-group">
+                <label htmlFor="Sortbydate" className="filter-label">Sort by date</label>
+                <select id="sort" value={sortOrder} className="sort-dropdown-field" onChange={(e) => {
                     setSortOrder(e.target.value);
                     setCurrentPage(1);
                 }}>
@@ -35,7 +37,7 @@ function Dashboard2(props){
                 </select>
             </div>
           </div>
-          <table>
+          <table className="referrals-data-table">
   <thead>
     <tr>
       <th>Name</th>
@@ -48,46 +50,53 @@ function Dashboard2(props){
   <tbody>
     {currentReferrals.length === 0 ? (
         <tr>
-            <td colSpan="4">No referrals found.</td>
+            <td colSpan="4" className="no-data-cell">No referrals found.</td>
         </tr>
     ) : (
         currentReferrals.map(each=>(
-            <tr key={each.id} onClick={() => navigate(`/referral/${each.id}`)}>
-                <td>{each.name}</td>
-                <td>{each.serviceName}</td>
-                <td>{each.date}</td>
-            <td>{each.profit}</td>
+            <tr key={each.id} className="table-clickable-row" onClick={() => navigate(`/referral/${each.id}`)}>
+            <td className="text-dark-cell">{each.name}</td>
+            <td className="text-muted-cell">{each.serviceName}</td>
+            <td className="text-muted-cell">{each.date}</td>
+            <td className="text-profit-cell">${each.profit}</td>
         </tr>
     )))}
   </tbody>
 </table>
-<div>
-    <div>
+<div className="table-pagination-row">
+    <div className="pagination-info-text">
         <p>Showing {firstIndex + 1}-{lastIndex} of {referrals.length} entries</p>
     </div>
-    <div>
-        {currentPage > 1 ? <button type="button" onClick={() => setCurrentPage(currentPage - 1)}>Previous</button>: <button type="button" disabled>Previous</button>}
-        <button type="button" onClick={() => setCurrentPage(1)}>1</button>
-        <button type="button" onClick={() => setCurrentPage(2)}>2</button>
-        <button type="button" onClick={() => setCurrentPage(3)}>3</button>
-        <button type="button" onClick={() => setCurrentPage(4)}>4</button>
-        <button type="button" onClick={() => setCurrentPage(5)}>5</button>
-        {currentPage < 5 ? <button type="button" onClick={() => setCurrentPage(currentPage + 1)}>Next</button>: <button type="button" disabled>Next</button>}
+    <div className="pagination-buttons-wrapper">
+        {currentPage > 1 ? <button type="button" className="nav-page-btn" onClick={() => setCurrentPage(currentPage - 1)}>Previous</button>: <button type="button" className="nav-page-btn" disabled>Previous</button>}
+        
+        {[1, 2, 3, 4, 5].map(num => (
+            <button key={num} type="button" className={`number-page-btn ${currentPage === num ? 'active-page-btn' : ''}`} onClick={() => setCurrentPage(num)}>
+                {num}
+            </button>
+        ))}
+       
+
+
+        {currentPage < 5 ? <button type="button" className="nav-page-btn" onClick={() => setCurrentPage(currentPage + 1)}>Next</button>: <button type="button" className="nav-page-btn" disabled>Next</button>}
     </div>
 </div>
         </section>
 
-       <section>
-        <div>
-            <h1>Go Business</h1>
+       <footer className="dashboard-single-line-footer">
+        <div className="footer-brand-title">
+            Go Business
+            <div className="footer-links-row">
             <p>About</p>
             <p>Contact</p>
             <p>Privacy</p>
             <p>Terms</p>
-            <p>© 2024 Go Business, Inc.</p>
+            <p className="footer-copyright-text" >© 2024 Go Business, Inc.</p>
         </div>
-       </section>
+        </div>
+       </footer>
        </>
     )
 }
+
 export default Dashboard2;
