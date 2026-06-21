@@ -73,7 +73,7 @@ function DashboardPage() {
                     const data = await response.json();
                     setReferrals(data.data.referrals);
                 } else {
-                    console.error('Error fetching referrals:', reponse.statusText);
+                    console.error('Error fetching referrals:', response.statusText);
                     setError('Failed to fetch referrals');
                 }
             } catch (error) {
