@@ -38,7 +38,7 @@ function DashboardPage() {
         }
     };
 
-    // 💡 MOVE ON-MOUNT FETCH INSIDE ITS OWN HOOK TO FIX LINE 84 CRASH
+    //  MOVE ON-MOUNT FETCH INSIDE ITS OWN HOOK TO FIX LINE 84 CRASH
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -63,13 +63,13 @@ function DashboardPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []); 
 
-    // 💡 MOVE FILTER FETCH INSIDE ITS OWN HOOK TO FIX LINE 90 CRASH
+    // MOVE FILTER FETCH INSIDE ITS OWN HOOK TO FIX LINE 90 CRASH
     useEffect(() => {
         const fetchReferrals = async () => {
             try {
-                const reponse = await fetch(`https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/referrals?search=${searchTerm}&sort=${sortOrder}`, options);
+                const response = await fetch(`https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/referrals?search=${searchTerm}&sort=${sortOrder}`, options);
                 
-                if (reponse.ok) {
+                if (response.ok) {
                     const data = await response.json();
                     setReferrals(data.data.referrals);
                 } else {
